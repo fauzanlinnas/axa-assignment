@@ -33,8 +33,17 @@ export const getAlbumDetail = (albumId) => {
 export const getPostDetail = (postId) => {
   return instance.get(`/posts/${postId}`);
 };
+
 export const getComments = (postId) => {
   return instance.get(`/posts/${postId}/comments`);
+};
+
+export const addCommentApi = (payload) => {
+  return instance.post(`/comments`, payload);
+};
+
+export const deleteCommentApi = (commentId) => {
+  return instance.delete(`/comments/${commentId}`);
 };
 
 export const createPost = (payload) => {
