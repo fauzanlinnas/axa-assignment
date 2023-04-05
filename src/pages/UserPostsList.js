@@ -73,7 +73,9 @@ const UserPostsList = () => {
           <li key={i} className="mb-4">
             <div className="flex items-center justify-between">
               <Link to={`/post/${post.id}`}>
-                <h4 className="font-semibold text-lg">{post.title}</h4>
+                <h4 className="font-semibold text-lg hover:underline">
+                  {post.title}
+                </h4>
               </Link>
               <button
                 onClick={() => handleDeletePost(post.id)}

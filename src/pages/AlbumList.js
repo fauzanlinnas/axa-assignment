@@ -27,8 +27,8 @@ const AlbumList = () => {
       </h2>
       <ol className="list-decimal">
         {albums.map((album) => (
-          <Link to={`/users/${id}/album-list/${album.id}`}>
-            <li key={album.id} className="mb-2">
+          <Link key={album.id} to={`/users/${id}/album-list/${album.id}`}>
+            <li className="mb-2 hover:underline font-semibold text-lg">
               {album.title}
             </li>
           </Link>

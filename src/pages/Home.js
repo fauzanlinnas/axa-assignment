@@ -18,8 +18,8 @@ const Home = () => {
   return (
     <div>
       <h2 className="text-2xl mb-6 font-bold">User List</h2>
-      {users.map((val, i) => (
-        <div className="flex items-center space-x-2">
+      {users.map((val) => (
+        <div key={val.id} className="flex items-center space-x-2">
           <h3 className="w-96 text-xl font-medium">{val.name}</h3>
           <Link
             to={`/users/${val.id}`}
