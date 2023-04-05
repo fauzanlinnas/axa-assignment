@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { deletePostApi, getUserDetail, getUserPosts } from "../services/api.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import FormNewPost from "../component/FormNewPost.js";
 import Modal from "../component/Modal.js";
@@ -9,6 +8,8 @@ import {
   deletePost,
   initPost,
 } from "../store/actions/postsActions.js";
+import { deletePostApi, getUserPosts } from "../services/postsApi.js";
+import { getUserDetail } from "../services/usersApi.js";
 
 const UserPostsList = () => {
   const navigate = useNavigate();

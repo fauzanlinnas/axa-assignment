@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { deleteCommentApi, getComments, getPostDetail } from "../services/api";
 import { useNavigate, useParams } from "react-router-dom";
 import Modal from "../component/Modal";
 import FormNewComment from "../component/FormNewComment";
@@ -9,6 +8,8 @@ import {
   deleteComment,
   initComment,
 } from "../store/actions/commentsActions";
+import { getPostDetail } from "../services/postsApi";
+import { deleteCommentApi, getComments } from "../services/commentApi";
 
 const PostDetail = () => {
   const navigate = useNavigate();

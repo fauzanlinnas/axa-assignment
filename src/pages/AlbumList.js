@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { getUserAlbums } from "../services/api";
 import { Link, useNavigate, useParams } from "react-router-dom";
+import { getUserAlbums } from "../services/usersApi";
 
 const AlbumList = () => {
   const navigate = useNavigate();

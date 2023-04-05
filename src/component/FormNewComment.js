@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { addCommentApi } from "../services/api";
+import { addCommentApi } from "../services/commentApi";
 
 const FormNewComment = ({ onSuccess, postId }) => {
   const [comment, setComment] = useState("");
