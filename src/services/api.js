@@ -40,3 +40,7 @@ export const getComments = (postId) => {
 export const createPost = (payload) => {
   return instance.post("/posts", payload);
 };
+
+export const deletePostApi = (postId) => {
+  return instance.delete(`/posts/${postId}`);
+};

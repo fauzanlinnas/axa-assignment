@@ -11,3 +11,10 @@ export const addPost = (post) => {
     payload: post,
   };
 };
+
+export const deletePost = (id) => {
+  return {
+    type: "DELETE_POST",
+    payload: id,
+  };
+};
