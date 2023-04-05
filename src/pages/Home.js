@@ -21,6 +21,7 @@ const Home = () => {
         <div className="flex items-center space-x-2">
           <p className="w-96">{val.name}</p>
           <Link to={`/users/${val.id}`}>See Posts</Link>
+          <Link to={`/users/${val.id}/album-list`}>See Albums</Link>
         </div>
       ))}
     </div>

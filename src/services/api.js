@@ -21,3 +21,7 @@ export const getUserPosts = (userId) => {
 export const getUserDetail = (userId) => {
   return instance.get(`/users/${userId}`);
 };
+
+export const getUserAlbums = (userId) => {
+  return instance.get(`/users/${userId}/albums`);
+};
