@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/%7Brepo-name%7D/static/css/main.4e4f1490.css",
-    "main.js": "/%7Brepo-name%7D/static/js/main.903c4a0b.js",
-    "static/js/787.70fa5136.chunk.js": "/%7Brepo-name%7D/static/js/787.70fa5136.chunk.js",
-    "index.html": "/%7Brepo-name%7D/index.html",
-    "main.4e4f1490.css.map": "/%7Brepo-name%7D/static/css/main.4e4f1490.css.map",
-    "main.903c4a0b.js.map": "/%7Brepo-name%7D/static/js/main.903c4a0b.js.map",
-    "787.70fa5136.chunk.js.map": "/%7Brepo-name%7D/static/js/787.70fa5136.chunk.js.map"
+    "main.css": "/axa-assignment/static/css/main.4e4f1490.css",
+    "main.js": "/axa-assignment/static/js/main.413cae23.js",
+    "static/js/787.70fa5136.chunk.js": "/axa-assignment/static/js/787.70fa5136.chunk.js",
+    "index.html": "/axa-assignment/index.html",
+    "main.4e4f1490.css.map": "/axa-assignment/static/css/main.4e4f1490.css.map",
+    "main.413cae23.js.map": "/axa-assignment/static/js/main.413cae23.js.map",
+    "787.70fa5136.chunk.js.map": "/axa-assignment/static/js/787.70fa5136.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4e4f1490.css",
-    "static/js/main.903c4a0b.js"
+    "static/js/main.413cae23.js"
   ]
 }
