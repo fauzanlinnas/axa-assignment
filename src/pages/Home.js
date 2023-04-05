@@ -17,11 +17,22 @@ const Home = () => {
 
   return (
     <div>
+      <h2 className="text-2xl mb-6 font-bold">User List</h2>
       {users.map((val, i) => (
         <div className="flex items-center space-x-2">
-          <p className="w-96">{val.name}</p>
-          <Link to={`/users/${val.id}`}>See Posts</Link>
-          <Link to={`/users/${val.id}/album-list`}>See Albums</Link>
+          <h3 className="w-96 text-xl font-medium">{val.name}</h3>
+          <Link
+            to={`/users/${val.id}`}
+            className="shadow bg-blue-500 text-white py-2 px-4 rounded-md mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            See Posts
+          </Link>
+          <Link
+            to={`/users/${val.id}/album-list`}
+            className="shadow bg-yellow-500 text-white py-2 px-4 rounded-md mt-4 hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          >
+            See Albums
+          </Link>
         </div>
       ))}
     </div>
