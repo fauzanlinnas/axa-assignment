@@ -23,7 +23,7 @@ const AlbumList = () => {
   return (
     <div>
       <h2 className="mb-4 text-2xl font-semibold">
-        <button onClick={() => navigate(-1)}>{"< "}</button> Albums
+        <button onClick={() => navigate(-1)}>{"<"}</button> Albums
       </h2>
       <ol className="list-decimal">
         {albums.map((album) => (
