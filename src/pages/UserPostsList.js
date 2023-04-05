@@ -3,14 +3,19 @@ import { getUserDetail, getUserPosts } from "../services/api.js";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import FormNewPost from "../component/FormNewPost.js";
 import Modal from "../component/Modal.js";
+import { useDispatch, useSelector } from "react-redux";
+import { addPost, initPost } from "../store/actions/postsActions.js";
 
 const UserPostsList = () => {
+  console.log("kepanggil berkali2");
   const navigate = useNavigate();
   const { id } = useParams();
 
   const [user, setUser] = useState(null);
-  const [posts, setPosts] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
+
+  const posts = useSelector((state) => state.posts.posts);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchUserAndPosts = async () => {
@@ -21,17 +26,17 @@ const UserPostsList = () => {
         ]);
 
         setUser(userResponse.data);
-        setPosts(postsResponse.data);
+        dispatch(initPost(postsResponse.data));
       } catch (error) {
         console.error(error);
       }
     };
 
     fetchUserAndPosts();
-  }, [id]);
+  }, [id, dispatch]);
 
   const handleOnSuccess = (payload) => {
-    setPosts((oldList) => [...oldList, payload]);
+    dispatch(addPost(payload));
 
     setIsFormOpen(false);
   };
@@ -51,8 +56,8 @@ const UserPostsList = () => {
         </button>
       </div>
       <ol className="list-decimal">
-        {posts.map((post) => (
-          <li key={post.id} className="mb-4">
+        {posts.map((post, i) => (
+          <li key={i} className="mb-4">
             <Link to={`/post/${post.id}`}>
               <h4 className="font-semibold text-lg">{post.title}</h4>
             </Link>
