@@ -36,3 +36,7 @@ export const getPostDetail = (postId) => {
 export const getComments = (postId) => {
   return instance.get(`/posts/${postId}/comments`);
 };
+
+export const createPost = (payload) => {
+  return instance.post("/posts", payload);
+};
