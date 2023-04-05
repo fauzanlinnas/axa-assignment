@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { createPost } from "../services/postsApi";
+import { createPost, editPostApi } from "../services/postsApi";
 
-const FormNewPost = ({ onSuccess }) => {
-  const [title, setTitle] = useState("");
-  const [body, setBody] = useState("");
+const FormNewPost = ({ onSuccess, isEdit, postData }) => {
+  const [title, setTitle] = useState(isEdit ? postData.title : "");
+  const [body, setBody] = useState(isEdit ? postData.body : "");
 
   const handleTitleChange = (event) => {
     setTitle(event.target.value);
@@ -19,15 +19,30 @@ const FormNewPost = ({ onSuccess }) => {
     try {
       const response = await createPost({ title, body });
 
-      console.log("New post created:", response.data);
       onSuccess(response.data);
     } catch (error) {
-      console.error("Error creating new post:", error);
+      console.error(error);
+    }
+  };
+
+  const handleEdit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await editPostApi({
+        ...postData,
+        title,
+        body,
+      });
+
+      onSuccess(response.data);
+    } catch (error) {
+      console.error(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={isEdit ? handleEdit : handleSubmit}>
       <div>
         <label htmlFor="title">Title</label>
         <input
@@ -42,6 +57,7 @@ const FormNewPost = ({ onSuccess }) => {
       <div>
         <label htmlFor="body">Content</label>
         <textarea
+          rows={8}
           id="body"
           value={body}
           onChange={handleBodyChange}
@@ -53,7 +69,7 @@ const FormNewPost = ({ onSuccess }) => {
         type="submit"
         className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       >
-        Create Post
+        {isEdit ? "Edit Post" : "Create Post"}
       </button>
     </form>
   );

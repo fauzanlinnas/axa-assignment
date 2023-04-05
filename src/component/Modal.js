@@ -1,4 +1,3 @@
-import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { CloseIcon } from "../assets/icon";
 
@@ -11,7 +10,7 @@ const MODAL_STYLES = {
   padding: "24px",
   zIndex: 1001,
   borderRadius: "10px",
-  width: "420px",
+  width: "640px",
 };
 
 const OVERLAY_STYLES = {

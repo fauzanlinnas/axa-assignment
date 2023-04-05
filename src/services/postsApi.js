@@ -15,3 +15,7 @@ export const createPost = (payload) => {
 export const deletePostApi = (postId) => {
   return api.delete(`/posts/${postId}`);
 };
+
+export const editPostApi = (payload) => {
+  return api.put(`/posts/${payload.id}`, payload);
+};

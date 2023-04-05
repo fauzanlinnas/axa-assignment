@@ -10,6 +10,8 @@ import {
 } from "../store/actions/commentsActions";
 import { getPostDetail } from "../services/postsApi";
 import { deleteCommentApi, getComments } from "../services/commentApi";
+import FormNewPost from "../component/FormNewPost";
+import { editPost } from "../store/actions/postsActions";
 
 const PostDetail = () => {
   const navigate = useNavigate();
@@ -19,6 +21,7 @@ const PostDetail = () => {
 
   const [post, setPost] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isEditFormOpen, setIsEditFormOpen] = useState(false);
 
   useEffect(() => {
     const fetchPostAndComments = async () => {
@@ -50,21 +53,36 @@ const PostDetail = () => {
     setIsFormOpen(false);
   };
 
+  const handleOnEditSuccess = (payload) => {
+    setPost(payload);
+    dispatch(editPost(payload));
+
+    setIsEditFormOpen(false);
+  };
+
   return (
     <div>
-      <h2 className="mb-4 text-2xl font-semibold">
-        <button onClick={() => navigate(-1)}>{"< "}</button> Back
-      </h2>
+      <div className="mb-4 flex items-center space-x-3">
+        <h2 className="mb-1 text-2xl font-semibold">
+          <button onClick={() => navigate(-1)}>{"< "}</button> Back
+        </h2>
+        <button
+          className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          onClick={() => setIsEditFormOpen(true)}
+        >
+          Edit Post
+        </button>
+      </div>
 
       {post && (
         <div className="mb-12">
           <h2 className="text-xl font-bold mb-2">{post.title}</h2>
-          <p>{post.body}</p>
+          <p className="whitespace-pre-wrap">{post.body}</p>
         </div>
       )}
 
       <div className="flex items-center mb-3">
-        <h3 className="text-lg font-bold mb-2">Comments</h3>
+        <h3 className="text-lg font-bold">Comments</h3>
         <button
           onClick={() => setIsFormOpen(true)}
           className="ml-3 bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
@@ -85,7 +103,7 @@ const PostDetail = () => {
               Delete comment
             </button>
           </div>
-          <p>{comment.body}</p>
+          <p className="whitespace-pre-wrap">{comment.body}</p>
         </div>
       ))}
       <Modal
@@ -96,6 +114,17 @@ const PostDetail = () => {
         <FormNewComment
           onSuccess={(payload) => handleOnSuccess(payload)}
           postId={id}
+        />
+      </Modal>
+      <Modal
+        isOpen={isEditFormOpen}
+        title="Edit Post"
+        onClose={() => setIsEditFormOpen(false)}
+      >
+        <FormNewPost
+          onSuccess={(payload) => handleOnEditSuccess(payload)}
+          isEdit={true}
+          postData={post}
         />
       </Modal>
     </div>

@@ -15,10 +15,9 @@ const FormNewComment = ({ onSuccess, postId }) => {
         email: "fauzanlinnas@gmail.com",
       });
 
-      console.log("New comment created:", response.data);
       onSuccess(response.data);
     } catch (error) {
-      console.error("Error creating new comment:", error);
+      console.error(error);
     }
   };
 
