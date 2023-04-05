@@ -25,3 +25,14 @@ export const getUserDetail = (userId) => {
 export const getUserAlbums = (userId) => {
   return instance.get(`/users/${userId}/albums`);
 };
+
+export const getAlbumDetail = (albumId) => {
+  return instance.get(`/albums/${albumId}/photos`);
+};
+
+export const getPostDetail = (postId) => {
+  return instance.get(`/posts/${postId}`);
+};
+export const getComments = (postId) => {
+  return instance.get(`/posts/${postId}/comments`);
+};
