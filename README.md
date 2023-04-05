@@ -1,3 +1,10 @@
+Fauzan Linnas - 5 April 2023 - Assignment for AXA Recruitment
+
+To run locally:
+
+1. npm install
+2. npm start
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
