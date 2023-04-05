@@ -15,7 +15,7 @@ const FormNewComment = ({ onSuccess, isEdit, postId, commentData }) => {
         email: "fauzanlinnas@gmail.com",
       });
 
-      onSuccess({ ...response.data });
+      onSuccess(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -30,7 +30,7 @@ const FormNewComment = ({ onSuccess, isEdit, postId, commentData }) => {
         body: comment,
       });
 
-      onSuccess({ ...response.data });
+      onSuccess(response.data);
     } catch (error) {
       console.error(error);
     }
@@ -40,6 +40,7 @@ const FormNewComment = ({ onSuccess, isEdit, postId, commentData }) => {
     <form onSubmit={isEdit ? handleEditSubmit : handleSubmit}>
       <div>
         <textarea
+          rows={4}
           id="body"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
@@ -51,7 +52,7 @@ const FormNewComment = ({ onSuccess, isEdit, postId, commentData }) => {
         type="submit"
         className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       >
-        {isEdit ? "Edit Comment" : "Add Comment"}
+        {isEdit ? "Edit" : "Add Comment"}
       </button>
     </form>
   );

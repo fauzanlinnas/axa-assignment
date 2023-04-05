@@ -127,7 +127,7 @@ const PostDetail = () => {
       ))}
       <Modal
         isOpen={isFormOpen}
-        title="Add New Comment"
+        title={isEditComment ? "Edit Comment" : "Add New Comment"}
         onClose={() => setIsFormOpen(false)}
       >
         <FormNewComment
