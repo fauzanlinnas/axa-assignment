@@ -17,3 +17,7 @@ export const getUsers = () => {
 export const getUserPosts = (userId) => {
   return instance.get(`/posts?userId=${userId}`);
 };
+
+export const getUserDetail = (userId) => {
+  return instance.get(`/users/${userId}`);
+};
