@@ -13,3 +13,7 @@ const instance = axios.create({
 export const getUsers = () => {
   return instance.get("/users");
 };
+
+export const getUserPosts = (userId) => {
+  return instance.get(`/posts?userId=${userId}`);
+};

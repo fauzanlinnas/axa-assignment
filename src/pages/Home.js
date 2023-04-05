@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getUsers } from "../services/api.js";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [users, setUsers] = useState([]);
@@ -19,6 +20,7 @@ const Home = () => {
       {users.map((val, i) => (
         <div className="flex items-center space-x-2">
           <p className="w-96">{val.name}</p>
+          <Link to={`/users/${val.id}`}>See Posts</Link>
         </div>
       ))}
     </div>
