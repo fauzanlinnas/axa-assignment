@@ -11,3 +11,7 @@ export const addCommentApi = (payload) => {
 export const deleteCommentApi = (commentId) => {
   return api.delete(`/comments/${commentId}`);
 };
+
+export const editCommentApi = (payload) => {
+  return api.put(`/comments/${payload.id}`, payload);
+};

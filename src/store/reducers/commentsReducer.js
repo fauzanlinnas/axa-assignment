@@ -23,6 +23,14 @@ const commentsReducer = (state = initialState, action) => {
         ...state,
         comments: updatedComments,
       };
+    case "EDIT_COMMENT":
+      return {
+        ...state,
+        comments: state.comments.map((comment) =>
+          comment.id === action.payload.id ? action.payload : comment
+        ),
+      };
+
     default:
       return state;
   }

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { addCommentApi } from "../services/commentApi";
+import { addCommentApi, editCommentApi } from "../services/commentApi";
 
-const FormNewComment = ({ onSuccess, postId }) => {
-  const [comment, setComment] = useState("");
+const FormNewComment = ({ onSuccess, isEdit, postId, commentData }) => {
+  const [comment, setComment] = useState(isEdit ? commentData.body : "");
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -15,14 +15,29 @@ const FormNewComment = ({ onSuccess, postId }) => {
         email: "fauzanlinnas@gmail.com",
       });
 
-      onSuccess(response.data);
+      onSuccess({ ...response.data });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleEditSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const response = await editCommentApi({
+        ...commentData,
+        body: comment,
+      });
+
+      onSuccess({ ...response.data });
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={isEdit ? handleEditSubmit : handleSubmit}>
       <div>
         <textarea
           id="body"
@@ -36,7 +51,7 @@ const FormNewComment = ({ onSuccess, postId }) => {
         type="submit"
         className="bg-blue-500 text-white py-2 px-4 rounded-md mt-4 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
       >
-        Add Comment
+        {isEdit ? "Edit Comment" : "Add Comment"}
       </button>
     </form>
   );

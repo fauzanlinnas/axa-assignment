@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addComment,
   deleteComment,
+  editComment,
   initComment,
 } from "../store/actions/commentsActions";
 import { getPostDetail } from "../services/postsApi";
@@ -21,6 +22,8 @@ const PostDetail = () => {
 
   const [post, setPost] = useState(null);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [isEditComment, setIsEditComment] = useState(false);
+  const [editCommentData, setEditCommentData] = useState(null);
   const [isEditFormOpen, setIsEditFormOpen] = useState(false);
 
   useEffect(() => {
@@ -49,6 +52,12 @@ const PostDetail = () => {
 
   const handleOnSuccess = (payload) => {
     dispatch(addComment(payload));
+
+    setIsFormOpen(false);
+  };
+
+  const handleOnEditCommentSuccess = (payload) => {
+    dispatch(editComment(payload));
 
     setIsFormOpen(false);
   };
@@ -102,6 +111,16 @@ const PostDetail = () => {
             >
               Delete comment
             </button>
+            <button
+              onClick={() => {
+                setIsEditComment(true);
+                setIsFormOpen(true);
+                setEditCommentData(comment);
+              }}
+              className=" text-blue-600 font-bold ml-2"
+            >
+              Edit comment
+            </button>
           </div>
           <p className="whitespace-pre-wrap">{comment.body}</p>
         </div>
@@ -112,8 +131,14 @@ const PostDetail = () => {
         onClose={() => setIsFormOpen(false)}
       >
         <FormNewComment
-          onSuccess={(payload) => handleOnSuccess(payload)}
+          onSuccess={
+            isEditComment
+              ? (payload) => handleOnEditCommentSuccess(payload)
+              : (payload) => handleOnSuccess(payload)
+          }
           postId={id}
+          isEdit={isEditComment}
+          commentData={editCommentData}
         />
       </Modal>
       <Modal

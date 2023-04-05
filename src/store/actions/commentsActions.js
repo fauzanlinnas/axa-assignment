@@ -18,3 +18,10 @@ export const deleteComment = (id) => {
     payload: id,
   };
 };
+
+export const editComment = (comment) => {
+  return {
+    type: "EDIT_COMMENT",
+    payload: comment,
+  };
+};
