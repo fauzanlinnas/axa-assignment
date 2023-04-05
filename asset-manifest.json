@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.4e4f1490.css",
-    "main.js": "/static/js/main.47d59f0c.js",
-    "static/js/787.70fa5136.chunk.js": "/static/js/787.70fa5136.chunk.js",
-    "index.html": "/index.html",
-    "main.4e4f1490.css.map": "/static/css/main.4e4f1490.css.map",
-    "main.47d59f0c.js.map": "/static/js/main.47d59f0c.js.map",
-    "787.70fa5136.chunk.js.map": "/static/js/787.70fa5136.chunk.js.map"
+    "main.css": "/axa-assignment/static/css/main.458e3269.css",
+    "main.js": "/axa-assignment/static/js/main.54317345.js",
+    "static/js/787.70fa5136.chunk.js": "/axa-assignment/static/js/787.70fa5136.chunk.js",
+    "index.html": "/axa-assignment/index.html",
+    "main.458e3269.css.map": "/axa-assignment/static/css/main.458e3269.css.map",
+    "main.54317345.js.map": "/axa-assignment/static/js/main.54317345.js.map",
+    "787.70fa5136.chunk.js.map": "/axa-assignment/static/js/787.70fa5136.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4e4f1490.css",
-    "static/js/main.47d59f0c.js"
+    "static/css/main.458e3269.css",
+    "static/js/main.54317345.js"
   ]
 }
